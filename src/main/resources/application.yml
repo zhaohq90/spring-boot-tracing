@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: spring-boot-tracing
+  profiles:
+    active: dev
+
+application:
+
+  swagger:
+    # 是否启用
+    enable: true
+    system-config:
+      # 扫描的包，多个包使用逗号隔开
+      basePackage: in.aprilfish.system
+      description: 系统管理接口
+      title: 系统管理接口
+      version: '@project.version@'
+  # Filter配置
+  filter:
+    trace:
+      enable: true
+      url-patterns: /*
+      order: 1
+      async: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace
